@@ -23,4 +23,8 @@ export class CarPartsComponent {
 
         return sum;
     }
+
+    upQuantity() {
+        alert("You called upQuantity");
+    }
 }

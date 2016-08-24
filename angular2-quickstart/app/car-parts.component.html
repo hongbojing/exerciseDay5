@@ -1,12 +1,29 @@
-<p *ngIf="totalCarParts() > 0">There are {{totalCarParts()}} total parts in stock.</p>
-<p *ngIf="totalCarParts() === 0">It is out of stock in stock.</p>
-
-<ul *ngFor="let carPart of carParts">
-    <li>
-        <h2>{{carPart.name | uppercase}}</h2>
-        <p class="description">{{carPart.description}}</p>
-        <p class="price">{{carPart.price | currency:'CAD':true}}
-        <p *ngIf="carPart.inStock > 0">{{carPart.inStock}} in Stock</p>
-        <p *ngIf="carPart.inStock === 0">Out of stock</p>
+<ul>
+    <p class="total-statement" *ngIf="totalCarParts() > 0">There are {{totalCarParts()}} total parts in stock.</p>
+    <p class="total-statement" *ngIf="totalCarParts() === 0">It is out of stock in stock.</p>
+    <li class="card-component" *ngFor="let carPart of carParts" [class.featured] = "carPart.featured">
+        <div class="panel-body">
+            <table class="product-info">
+                <tr>
+                    <td class="item-image">
+                        <img [src]="carPart.image" alt="">
+                    </td>
+                    <td class="item">
+                        <h2>{{carPart.name | uppercase}}</h2>
+                        <p class="description">{{carPart.description}}</p>
+                        <p class="inventory" *ngIf="carPart.inStock > 0">{{carPart.inStock}} in Stock</p>
+                        <p class="inventory" *ngIf="carPart.inStock === 0">Out of Stock.</p>
+                    </td>
+                    <td class="price">
+                        {{carPart.price | currency:'EUR':true}}
+                    </td>
+                    <div class="select-quantity">
+                        <button class="increase" (click)="upQuantity()">
+                            +
+                        </button>
+                    </div>
+                </tr>
+            </table>
+        </div>
     </li>
 </ul>

@@ -24,6 +24,9 @@ var CarPartsComponent = (function () {
         }
         return sum;
     };
+    CarPartsComponent.prototype.upQuantity = function () {
+        alert("You called upQuantity");
+    };
     CarPartsComponent = __decorate([
         core_1.Component({
             selector: 'car-parts',
